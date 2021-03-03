@@ -1,43 +1,56 @@
 package com.kc.project.rashmiwebservice;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class RashmiSetTest {
 
+    static RashmiSet rashmiSet=null;
+    @BeforeAll
+    static void setUp() {
+        rashmiSet = new RashmiSet();
+    }
+
     @Test
     void createEmptySet() {
-        RashmiSet rashmiSet = new RashmiSet();
-        assertEquals(0,rashmiSet.size());
+        assertEquals(11,rashmiSet.size());
     }
     @Test
     void addToSet() {
-        RashmiSet rashmiSet = new RashmiSet();
         rashmiSet.add(10);
         rashmiSet.add(20);
-        assertEquals(2,rashmiSet.size());
+        assertEquals(7,rashmiSet.size());
     }
     @Test
     void addToSetExceedArraySize() {
-        RashmiSet rashmiSet = new RashmiSet();
         rashmiSet.add(10);
         rashmiSet.add(20);
         rashmiSet.add(30);
         rashmiSet.add(40);
         rashmiSet.add(50);
         rashmiSet.add(60);
-        rashmiSet.add(70);
-        rashmiSet.add(80);
-        rashmiSet.add(90);
-        rashmiSet.add(100);
-        rashmiSet.add(110);
-        rashmiSet.add(120);
-        rashmiSet.add(130);
-        rashmiSet.add(140);
-        rashmiSet.add(150);
-        rashmiSet.add(160);
-        assertEquals(16,rashmiSet.size());
+        assertEquals(11,rashmiSet.size());
     }
+    @Test
+    void addUniqueToSet() {
+        rashmiSet.addUnique(20);
+        rashmiSet.addUnique(20);
+        rashmiSet.addUnique(30);
+        rashmiSet.addUnique(10);
+        rashmiSet.addUnique(50);
+        rashmiSet.addUnique(60);
+        assertEquals(5,rashmiSet.size());
+    }
+    @Test
+    void removeFromSet() {
+        assertEquals(7,rashmiSet.size());
+        rashmiSet.remove(10);
+        assertEquals(5,rashmiSet.size());
+        assertArrayEquals(new int[]{20, 30, 50, 60, 20, 0, 0, 0, 0}, rashmiSet.intArr);
+    }
+
 
 }
