@@ -20,4 +20,25 @@ public class RashmiSet {
             intArr = tempArr;
         }
     }
+
+    public void addUnique(int item){
+        boolean dulpicate=false;
+        for(int j=0;j<intArr.length;j++){
+            if(intArr[j]==item){
+                dulpicate=true;
+                break;
+            }
+        }
+        if(!dulpicate) {
+            intArr[count] = item;
+            count++;
+            if (count == intArr.length) {
+                int[] tempArr = new int[intArr.length * 2];
+                for (int i = 0; i < intArr.length; i++) {
+                    tempArr[i] = intArr[i];
+                }
+                intArr = tempArr;
+            }
+        }
+    }
 }

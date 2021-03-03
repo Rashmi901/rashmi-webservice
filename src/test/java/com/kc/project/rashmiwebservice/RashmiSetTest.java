@@ -39,5 +39,16 @@ public class RashmiSetTest {
         rashmiSet.add(160);
         assertEquals(16,rashmiSet.size());
     }
+    @Test
+    void addUniqueToSet() {
+        RashmiSet rashmiSet = new RashmiSet();
+        rashmiSet.addUnique(10);
+        rashmiSet.addUnique(20);
+        rashmiSet.addUnique(10);
+        rashmiSet.addUnique(20);
+        rashmiSet.addUnique(50);
+        rashmiSet.addUnique(60);
+        assertEquals(4,rashmiSet.size());
+    }
 
 }
