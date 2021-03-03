@@ -11,35 +11,24 @@ public class RashmiSet {
         return count;
     }
 
-    public void add(int item){
+
+
+    public void add(int item) {
+        for (int j = 0; j < intArr.length; j++) {
+            if (intArr[j] == item) {
+                return;
+            }
+        }
         intArr[count] = item;
         count++;
-        if(count==intArr.length){
+        if (count == intArr.length) {
             int[] tempArr = new int[intArr.length * 2];
-            for (int i=0; i < intArr.length; i++){
+            for (int i = 0; i < intArr.length; i++) {
                 tempArr[i] = intArr[i];
             }
             intArr = tempArr;
         }
     }
-
-    public void addUnique(int item){
-        boolean dulpicate=false;
-        for(int j=0;j<intArr.length;j++){
-            if(intArr[j]==item){
-               return;
-            }
-        }
-            intArr[count] = item;
-            count++;
-            if (count == intArr.length) {
-                int[] tempArr = new int[intArr.length * 2];
-                for (int i = 0; i < intArr.length; i++) {
-                    tempArr[i] = intArr[i];
-                }
-                intArr = tempArr;
-            }
-        }
 
     public void remove(int item) {
         int index = -1;
@@ -49,14 +38,11 @@ public class RashmiSet {
             break;
             }
         }
-            int[] temp = new int[intArr.length-1];
-            for(int j=0,k=0;j<intArr.length;j++){
-                if(index==j || intArr[j]== item){
-                    System.out.println("count:::" +count--);
-                    continue;
-                }
-                temp[k++] = intArr[j];
-            }
-            intArr=temp;
+        if(index>0) {
+            int[] temp = intArr;
+            System.arraycopy(temp, size() - 1, intArr, index, 1);
+            System.arraycopy(intArr, size(), intArr, size() - 1, 1);
+            count--;
+        }
     }
 }
