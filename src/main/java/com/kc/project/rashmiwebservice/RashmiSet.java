@@ -1,5 +1,7 @@
 package com.kc.project.rashmiwebservice;
 
+import java.util.Arrays;
+
 public class RashmiSet {
 
     int[] intArr = new int[5];
@@ -38,4 +40,23 @@ public class RashmiSet {
                 intArr = tempArr;
             }
         }
+
+    public void remove(int item) {
+        int index = -1;
+        for(int i=0;i<intArr.length;i++) {
+            if (intArr[i] == item) {
+            index = index+(i+1);
+            break;
+            }
+        }
+            int[] temp = new int[intArr.length-1];
+            for(int j=0,k=0;j<intArr.length;j++){
+                if(index==j || intArr[j]== item){
+                    System.out.println("count:::" +count--);
+                    continue;
+                }
+                temp[k++] = intArr[j];
+            }
+            intArr=temp;
+    }
 }
