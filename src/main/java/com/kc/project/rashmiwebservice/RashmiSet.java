@@ -1,21 +1,19 @@
 package com.kc.project.rashmiwebservice;
 
-import java.util.Arrays;
-
 public class RashmiSet {
 
     int[] intArr = new int[5];
 
     int count = 0;
+
     public int size() {
         return count;
     }
 
 
-
     public void add(int item) {
-        for (int j = 0; j < intArr.length; j++) {
-            if (intArr[j] == item) {
+        for (int k : intArr) {
+            if (k == item) {
                 return;
             }
         }
@@ -32,17 +30,14 @@ public class RashmiSet {
 
     public void remove(int item) {
         int index = -1;
-        for(int i=0;i<intArr.length;i++) {
+        for (int i = 0; i < intArr.length; i++) {
             if (intArr[i] == item) {
-            index = index+(i+1);
-            break;
+                index = index + (i + 1);
+                intArr[index] = intArr[count - 1];
+                intArr[count - 1] = 0;
+                count--;
+                break;
             }
-        }
-        if(index>0) {
-            int[] temp = intArr;
-            System.arraycopy(temp, size() - 1, intArr, index, 1);
-            System.arraycopy(intArr, size(), intArr, size() - 1, 1);
-            count--;
         }
     }
 }
