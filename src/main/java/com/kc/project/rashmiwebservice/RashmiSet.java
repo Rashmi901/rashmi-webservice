@@ -25,11 +25,9 @@ public class RashmiSet {
         boolean dulpicate=false;
         for(int j=0;j<intArr.length;j++){
             if(intArr[j]==item){
-                dulpicate=true;
-                break;
+               return;
             }
         }
-        if(!dulpicate) {
             intArr[count] = item;
             count++;
             if (count == intArr.length) {
@@ -40,5 +38,4 @@ public class RashmiSet {
                 intArr = tempArr;
             }
         }
-    }
 }
